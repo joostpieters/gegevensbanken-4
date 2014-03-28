@@ -17,6 +17,7 @@ Dit is een web-pagina.<br /><br />
 
 <?php
 	//Plaats hier je code
+	echo rand(1,20);
 ?>.
 
 <?php

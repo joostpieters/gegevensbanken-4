@@ -10,8 +10,16 @@
 	require("top.inc");
 
 // Implementeer je code hier.
+$naam = gebruikersInvoer('naam');
+$straat = gebruikersInvoer('straat');
+$nummer = gebruikersInvoer('nummer');
 
-<?php
+// Voer deze query uit en sla het result op in $result.
+	// LIKE omdat bij vertrektijd ook de tijd wordt gegeven en we deze niet nodig hebben en dus niet mee vergelijken (hiervoor ook dat %) 
+	$query = "UPDATE klant SET Straat = '".$straat."', Nummer = '".$nummer."' WHERE Naam = '".$naam."';";
+	$result = mysql_query($query) or die("Database fout: " . mysql_error());
+
+
 // Dit sluit de verbinding met de gegevensbank en de pagina af.
 require("bottom.inc");
 ?>

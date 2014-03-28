@@ -18,7 +18,22 @@
 <input type="submit" value="Zoek op aantal stops"/>
 </form>
 
-<!-- Voeg hier je code toe -->
+<!-- Dit is het formulier om te zoeken op vertrektijd: -->
+<form action="zoekopvertrektijd.php">
+<em>Vertrektijd (jjjj-mm-dd):</em> <input type="text" name="vertrektijd" length="10"/><br />
+
+<!-- De knop waarop de gebruiker kan klikken. -->
+<input type="submit" value="Zoek op vertrektijd"/>
+</form>
+
+<!-- Dit is het formulier om te zoeken op luchthaven van herkomst: -->
+<form action="zoekopoorsprong.php">
+<em>Luchthaven van herkomst:</em> <input type="text" name="luchthavenvanherkomst" /><br />
+
+<!-- De knop waarop de gebruiker kan klikken. -->
+<input type="submit" value="Zoek op luchthaven"/>
+</form>
+
 
 <?php
 // Dit sluit de verbinding met de gegevensbank en de pagina af.

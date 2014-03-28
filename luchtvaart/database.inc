@@ -11,7 +11,12 @@ $host = "localhost";
 
 
 // --- Plaats hier je code die er voor zorgt dat er verbinding wordt gemaakt met de database.
+$user = "root";
+$pass = "";
+$database = "luchtvaart";
 
+$conn = mysql_connect($host, $user, $pass) or die("Cannot connect to the database");
+mysql_select_db($database);
 
 // Helpfunctie om GET-variabele <$name> op te vragen en speciale karakters te geschikt te maken
 // voor gebruik in SQL-query (om SQL injection te voorkomen)
