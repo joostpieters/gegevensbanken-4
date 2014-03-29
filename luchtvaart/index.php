@@ -17,9 +17,28 @@ Dit is een web-pagina.<br /><br />
 
 <?php
 	//Plaats hier je code
-	echo rand(1,20);
+	echo "Een random nummer tussen 1 en 20:" . " " . rand(1,20);
 ?>.
+<br>
+<br>
+Dit is de huidige datum:<br>
 
+<?php
+// Simpele en bestaande manier om met data te werken:
+echo date('l jS F (Y-m-d)')
+?>
+<br>
+<br>
+Dit is de datum een week geleden:<br />
+<?php
+echo date('l jS F (Y-m-d)', strtotime('-7 days'))
+?>
+<br>
+<br>
+Dit is de datum binnen een week:<br />
+<?php
+echo date('l jS F (Y-m-d)', strtotime('+7 days'))
+?>
 <?php
 // Voer de inhoud van "bottom.inc" uit. Dit sluit de pagina af
 // en verbreekt de verbinding met de database.
