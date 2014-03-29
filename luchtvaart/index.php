@@ -25,19 +25,19 @@ Dit is de huidige datum:<br>
 
 <?php
 // Simpele en bestaande manier om met data te werken:
-echo date('l jS F (Y-m-d)')
+echo date('d-m-Y');
 ?>
 <br>
 <br>
 Dit is de datum een week geleden:<br />
 <?php
-echo date('l jS F (Y-m-d)', strtotime('-7 days'))
+echo date('d-m-Y', strtotime('-7 days'))
 ?>
 <br>
 <br>
 Dit is de datum binnen een week:<br />
 <?php
-echo date('l jS F (Y-m-d)', strtotime('+7 days'))
+echo date('d-m-Y', strtotime('+7 days'))
 ?>
 <?php
 // Voer de inhoud van "bottom.inc" uit. Dit sluit de pagina af
