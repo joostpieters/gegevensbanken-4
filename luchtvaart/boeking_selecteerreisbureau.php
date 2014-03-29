@@ -14,7 +14,18 @@
 <form action="boeking_selecteerklant.php">
 
 <!-- Voeg hier je code toe -->
+<p><em>Reisbureau:</em>
+<select name="naam">
+<?php
+	$query = "SELECT Reisbureau_ID, Straat, Nummer FROM Reisbureau ORDER BY Reisbureau_ID";
+	$resultaat = mysql_query($query) or die("Kan de lijst van reisbureaus niet opvragen: " . mysql_error());
+	while($rij = mysql_fetch_array($resultaat)) {
+		echo "<option value=\"". $rij['Reisbureau_ID']  . "\">" .$rij['Reisbureau_ID'] . " " . $rij['Straat'] . " " .$rij['Nummer'] . "</option>";
+	}
+?>
+</select>
 
+<input type="submit" value="Selecteer Reisbureau"/>
 </form>
 
 <?php
