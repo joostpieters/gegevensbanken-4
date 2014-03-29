@@ -10,15 +10,20 @@
 	require("top.inc");
 
 // Implementeer je code hier.
-$naam = gebruikersInvoer('naam');
+// we krijgen de string "voornaam,achternaam" mee, deze exploden we en kennen we toe aan $voornaam en $achternaam
+$naam = explode(',', gebruikersInvoer('naam'));
+$voornaam = $naam[0];
+$achternaam = $naam[1];
 $straat = gebruikersInvoer('straat');
 $nummer = gebruikersInvoer('nummer');
 
 // Voer deze query uit en sla het result op in $result.
-	// LIKE omdat bij vertrektijd ook de tijd wordt gegeven en we deze niet nodig hebben en dus niet mee vergelijken (hiervoor ook dat %) 
-	$query = "UPDATE klant SET Straat = '".$straat."', Nummer = '".$nummer."' WHERE Naam = '".$naam."';";
+	$query = "UPDATE Klant SET Straat = '".$straat."', Nummer = '".$nummer."' WHERE Voornaam = '".$voornaam."' and Familienaam = '".$achternaam."';";
+
 	$result = mysql_query($query) or die("Database fout: " . mysql_error());
 
+if (!mysql_error())
+echo "Het adres van " .$voornaam. " " . $achternaam . " is succesvol geupdated naar: " .$straat. " " . $nummer . ".";
 
 // Dit sluit de verbinding met de gegevensbank en de pagina af.
 require("bottom.inc");
