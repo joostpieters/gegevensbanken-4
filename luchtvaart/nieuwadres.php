@@ -15,10 +15,10 @@
 <p><em>Klant:</em>
 <select name="naam">
 <?php
-	$query = "SELECT Voornaam, Familienaam FROM Klant";
+	$query = "SELECT Familienaam, Voornaam FROM Klant ORDER BY Familienaam";
 	$resultaat = mysql_query($query) or die("Kan de lijst van klanten niet opvragen: " . mysql_error());
 	while($rij = mysql_fetch_array($resultaat)) {
-		echo "<option value=\"". $rij['Voornaam'] . ',' . $rij['Familienaam'] . "\">" .$rij['Voornaam'] . ' ' . $rij['Familienaam'] . "</option>";
+		echo "<option value=\"". $rij['Voornaam'] . ',' . $rij['Familienaam'] . "\">" .$rij['Familienaam'] . ' ' . $rij['Voornaam'] . "</option>";
 	}
 ?>
 </select></p>
