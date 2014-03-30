@@ -13,9 +13,6 @@
 <!-- Voeg hier je code toe -->
 <?php
 
-print_r($_GET);
-print_r($_SESSION);
-//Waaom noemt de get waarde Vlucht_Nr ???
 $boeking = explode(',', gebruikersInvoer('boeking'));
 $Vlucht_Nr = $boeking[0];
 $Luchtvaartmaatschappij_ID = $boeking[1];
