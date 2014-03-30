@@ -14,8 +14,9 @@
 <?php
 
 print_r($_GET);
-
-$boeking = explode(',', gebruikersInvoer('Vlucht_Nr'));
+print_r($_SESSION);
+//Waaom noemt de get waarde Vlucht_Nr ???
+$boeking = explode(',', gebruikersInvoer('boeking'));
 $Vlucht_Nr = $boeking[0];
 $Luchtvaartmaatschappij_ID = $boeking[1];
 $Zitplaats_Nr = $boeking[2];
@@ -24,8 +25,7 @@ $Zitplaats_Nr = $boeking[2];
 				VALUES (
 				   ". $_SESSION['Klant_ID'] .
 				"," . $_SESSION['reisbureau'] . 
-				"," . $Zitplaats_Nr . 
-				
+				"," . $Zitplaats_Nr . 	
 				"," . $Luchtvaartmaatschappij_ID .
 				"," . $Vlucht_Nr . 
 				");";
