@@ -23,6 +23,7 @@
 		<td><?php echo $entry['Voornaam']; ?></td>
 		<td><?php echo $entry['Familienaam']; ?></td>
 		<td><?php echo $entry['Emailadres']; ?></td>
+		<td><input type="submit" value="Kies klant"/></td>
 	</tr>
 <?php
 	}

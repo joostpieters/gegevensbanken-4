@@ -13,7 +13,7 @@
 <!-- Dit is het formulier om het adres in te geven: -->
 <form action="nieuwadres_uitvoer.php">
 <p><em>Klant:</em>
-<select name="naam">
+<select name="klant">
 <?php
 	$query = "SELECT Familienaam, Voornaam FROM Klant ORDER BY Familienaam";
 	$resultaat = mysql_query($query) or die("Kan de lijst van klanten niet opvragen: " . mysql_error());

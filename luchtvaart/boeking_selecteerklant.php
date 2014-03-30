@@ -13,9 +13,27 @@
 <!-- Dit moet het formulier worden om de vlucht in te geven: -->
 <form action="boeking_selecteervlucht.php">
 
-<!-- Voeg hier je code toe. -->
+<?php
+//Aangezien we het reisbureau later nog nodig hebben gaan we deze waarde die in $_GET zit opslaan in $_SESSION
+$_SESSION['reisbureau'] = gebruikersInvoer('reisbureau');
 
+?>
+
+<!-- Voeg hier je code toe. -->
+<p><em>Klant:</em>
+<select name="klant">
+<?php
+	$query = "SELECT Familienaam, Voornaam FROM Klant ORDER BY Familienaam";
+	$resultaat = mysql_query($query) or die("Kan de lijst van klanten niet opvragen: " . mysql_error());
+	while($rij = mysql_fetch_array($resultaat)) {
+		echo "<option value=\"". $rij['Voornaam'] . ',' . $rij['Familienaam'] . "\">" .$rij['Familienaam'] . ' ' . $rij['Voornaam'] . "</option>";
+	}
+?>
+</select></p>
+
+<input type="submit" value="Kies klant"/>
 </form>
+
 
 <?php
 // Dit sluit de verbinding met de gegevensbank en de pagina af.
