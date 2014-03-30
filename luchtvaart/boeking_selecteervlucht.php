@@ -31,6 +31,7 @@ INNER JOIN Vlucht as v ON v.Vlucht_Nr = z.Vlucht_Nr
 INNER JOIN Luchthaven AS k ON k.Luchthaven_ID = v.LuchthavenVanHerkomst
 INNER JOIN Luchthaven AS l ON l.Luchthaven_ID = v.LuchthavenVanBestemming
 WHERE w.Vlucht_Nr IS NULL and w.Zitplaats_Nr IS NULL 
+GROUP BY z.Vlucht_Nr, z.Klasse
 ORDER BY k.Naam, z.Vlucht_Nr, z.Klasse, z.Zitplaats_Nr";
 	$result = mysql_query($query) or die("Database fout: " . mysql_error());
 
@@ -51,7 +52,7 @@ ORDER BY k.Naam, z.Vlucht_Nr, z.Klasse, z.Zitplaats_Nr";
 			
 			
 				
-			<input type="submit" value="Kies klant"/>
+			<input type="submit" value="Kies Vlucht"/>
 		</form></td>
 	</tr>
 	
