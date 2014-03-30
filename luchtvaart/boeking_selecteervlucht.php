@@ -37,21 +37,23 @@ WHERE w.Vlucht_Nr IS NULL and w.Zitplaats_Nr IS NULL
 ORDER BY k.Naam, z.Vlucht_Nr, z.Klasse, z.Zitplaats_Nr";
 	$result = mysql_query($query) or die("Database fout: " . mysql_error());
 
-	while( $entry = mysql_fetch_array($result, MYSQL_ASSOC) ) {
+	while( $entry = mysql_fetch_array($result) ) {
 		
 ?>
 	<tr>
-		<td><?php echo $entry['Klasse']; ?></td>
-		<td><?php echo $entry['Klasse']; ?></td>
-		<td><?php echo $entry['Klasse']; ?></td>
-		<td<<?php echo $entry['Luchtvaartmaatschappij_ID'];?> </td>
+		<td><?php echo $entry[0]; ?></td>
+		<td><?php echo $entry[1]; ?></td>
+		<td><?php echo $entry[4]; ?></td>
+		<td><?php echo $entry[5]; ?></td>
 		<td><form action="boeking_uitvoer.php">
+			<input type ='hidden' name=Vlucht_Nr value="<?php echo $entry[2] ?>"/>
+			<input type ='hidden' name=Luchtvaartmaatschappij_ID="<?php echo $entry[5] ?>"/>
+			<input type ='hidden' name=Zitplaats_Nr="<?php echo $entry[3] ?>"/>
 			<input type="submit" value="Kies klant"/>
 			</form></td>
 	</tr>
 <?php
 	}
-	$key = array_search('Madang', $result);
 ?>
 	</table>
 <?php

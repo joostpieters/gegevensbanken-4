@@ -14,7 +14,7 @@
 <form action="boeking_selecteervlucht.php">
 
 <?php
-//Aangezien we het reisbureau later nog nodig hebben gaan we deze waarde die in $_GET zit opslaan in $_SESSION
+//Aangezien we het reisbureau later nog gebruiken, gaan we deze waarde die in $_GET zit opslaan in $_SESSION
 $_SESSION['reisbureau'] = gebruikersInvoer('reisbureau');
 
 ?>
