@@ -47,15 +47,9 @@ ORDER BY k.Naam, z.Vlucht_Nr, z.Klasse, z.Zitplaats_Nr";
 		<td><form action="boeking_uitvoer.php">
 			<?php // De info voor de boeking meegeven?>
 			
-			<input type ='hidden' name=Vlucht_Nr value="<?php echo $entry['Vlucht_Nr'] ?>"/>
+			<input type ='hidden' name=boeking value="<?php echo $entry['Vlucht_Nr'] . "," . $entry['Luchtvaartmaatschappij_ID'] . "," . $entry['Zitplaats_Nr'] ?>"/>
 			
-			<input type ='hidden' name=Luchtvaartmaatschappij_ID="<?php echo $entry['Luchtvaartmaatschappij_ID'] ?>"/>
 			
-			<input type ='hidden' name=Zitplaats_Nr="<?php echo $entry['Zitplaats_Nr'] ?>"/>
-			
-			<input type ='hidden' name=Kland_ID="<?php $_SESSION['Klant_ID']?>"/>
-			
-			<input type ='hidden' name=Reisbureau_ID="<?php $_SESSION['reisbureau']?>"/>
 				
 			<input type="submit" value="Kies klant"/>
 		</form></td>
