@@ -11,7 +11,7 @@
 
 // Implementeer je code hier.
 // we krijgen de string "voornaam,achternaam" mee, deze exploden we en kennen we toe aan $voornaam en $achternaam
-$naam = explode(',', gebruikersInvoer('klant'));
+$naam = explode(',', gebruikersInvoer('naam'));
 $voornaam = $naam[0];
 $achternaam = $naam[1];
 $straat = gebruikersInvoer('straat');

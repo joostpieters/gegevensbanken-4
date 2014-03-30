@@ -11,7 +11,9 @@
 ?>
 
 <!-- Voeg hier je code toe -->
+<?php
 
+?>
 <?php
 // Dit sluit de verbinding met de gegevensbank en de pagina af.
 require("bottom.inc");

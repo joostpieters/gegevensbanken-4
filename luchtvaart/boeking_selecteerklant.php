@@ -23,10 +23,10 @@ $_SESSION['reisbureau'] = gebruikersInvoer('reisbureau');
 <p><em>Klant:</em>
 <select name="klant">
 <?php
-	$query = "SELECT Familienaam, Voornaam FROM Klant ORDER BY Familienaam";
+	$query = "SELECT Familienaam, Voornaam, Klant_ID FROM Klant ORDER BY Familienaam";
 	$resultaat = mysql_query($query) or die("Kan de lijst van klanten niet opvragen: " . mysql_error());
 	while($rij = mysql_fetch_array($resultaat)) {
-		echo "<option value=\"". $rij['Voornaam'] . ',' . $rij['Familienaam'] . "\">" .$rij['Familienaam'] . ' ' . $rij['Voornaam'] . "</option>";
+		echo "<option value=\"". $rij['Klant_ID'] . ',' . $rij['Voornaam'] . ',' . $rij['Familienaam'] . "\">" .$rij['Familienaam'] . ' ' . $rij['Voornaam'] . "</option>";
 	}
 ?>
 </select></p>
