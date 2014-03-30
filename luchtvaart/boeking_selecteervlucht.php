@@ -25,7 +25,11 @@ $_SESSION['klant_achternaam'] = $naam[2];
 	<tr><td>Vertrek</td><td>Aankomst</td><td>Klasse</td><td>Luchtvaartmaatschappij_ID</td></tr>
 <?php
 
-	$query = "SELECT k.naam, l.naam, z.Vlucht_Nr, z.Zitplaats_Nr, z.Klasse, z.Luchtvaartmaatschappij_ID  From Zitplaats AS z
+	$query = "SELECT k.naam, l.naam, 
+					 z.Vlucht_Nr, z.Zitplaats_Nr, 
+					 z.Klasse, z.Luchtvaartmaatschappij_ID,
+					 k.Luchthaven_ID, l.Luchthaven_ID 
+	 From Zitplaats AS z
 LEFT JOIN WordtGeboektDoor AS w ON z.Vlucht_Nr = w.Vlucht_Nr and z.Zitplaats_Nr = w.Zitplaats_Nr
 INNER JOIN Vlucht as v ON v.Vlucht_Nr = z.Vlucht_Nr
 INNER JOIN Luchthaven AS k ON k.Luchthaven_ID = v.LuchthavenVanHerkomst
@@ -48,7 +52,15 @@ ORDER BY k.Naam, z.Vlucht_Nr, z.Klasse, z.Zitplaats_Nr";
 		<td><form action="boeking_uitvoer.php">
 			<?php // De info voor de boeking meegeven?>
 			
-			<input type ='hidden' name=boeking value="<?php echo $entry['Vlucht_Nr'] . "," . $entry['Luchtvaartmaatschappij_ID'] . "," . $entry['Zitplaats_Nr'] ?>"/>
+			<input type ='hidden' name=boeking value="<?php echo $entry['Vlucht_Nr'] . "," . 
+																 $entry['Luchtvaartmaatschappij_ID'] . "," . 
+																 $entry['Zitplaats_Nr'] . "," . 
+																 $entry[6] . "," .
+																 $entry['Luchthaven_ID']. "," .
+																 $entry['Klasse']. "," .
+																 $entry[0]. "," .
+																 $entry['naam']
+																 ?>"/>
 			
 			
 				
