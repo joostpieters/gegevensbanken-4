@@ -10,7 +10,7 @@
 	require("top.inc");
 
 	// Voer deze query uit en sla het result op in $result.
-	$query = "SELECT Vlucht_Nr, LuchthavenVanBestemming, Vertrektijd, Aankomsttijd FROM Vlucht WHERE LuchthavenVanHerkomst = " . gebruikersInvoer('luchthavenvanherkomst') . ";";
+	$query = "SELECT Vlucht_Nr, Naam, Vertrektijd, Aankomsttijd FROM Vlucht JOIN Luchthaven ON LuchthavenVanBestemming=Luchthaven_ID WHERE Vlucht_Nr IN(SELECT Vlucht_Nr FROM Vlucht JOIN Luchthaven ON LuchthavenVanHerkomst=Luchthaven_ID WHERE Naam = '" . gebruikersInvoer('luchthavenvanherkomst') . "');";
 	$result = mysql_query($query) or die("Database fout: " . mysql_error());
 ?>
 <table>
@@ -26,7 +26,7 @@
 	
 	<tr>
 		<td><?php echo $entry['Vlucht_Nr']; ?></td>
-		<td><?php echo $entry['LuchthavenVanBestemming']; ?></td>
+		<td><?php echo $entry['Naam']; ?></td>
 		<td><?php echo $interval->format('%R%a days'); ?></td>
 	</tr>
 	<?php } ?>
