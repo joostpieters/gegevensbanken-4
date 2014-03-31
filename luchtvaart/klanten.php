@@ -14,6 +14,7 @@
 	<table>
 	<tr><td>Voornaam</td><td>Familienaam</td><td>Emailadres</td></tr>
 <?php
+	//Query om de klanten uit de database te halen.
 	$query = "SELECT Voornaam, Familienaam, Emailadres FROM Klant ORDER BY Familienaam";
 	$result = mysql_query($query) or die("Database fout: " . mysql_error());
 	

@@ -13,10 +13,11 @@
 <!-- Dit is het formulier om de klant in te geven: -->
 <form action="boeking_selecteerklant.php">
 
-<!-- Voeg hier je code toe -->
+
 <p><em>Reisbureau:</em>
 <select name="reisbureau">
 <?php
+// De query die alle reisbureaus ophaalt.
 	$query = "SELECT Reisbureau_ID, Straat, Nummer FROM Reisbureau ORDER BY Reisbureau_ID";
 	$resultaat = mysql_query($query) or die("Kan de lijst van reisbureaus niet opvragen: " . mysql_error());
 	while($rij = mysql_fetch_array($resultaat)) {

@@ -23,6 +23,7 @@ $_SESSION['reisbureau'] = gebruikersInvoer('reisbureau');
 <p><em>Klant:</em>
 <select name="klant">
 <?php
+//De boeking die een lijst van klanten terug geeft gesorteerd op achternaam.
 	$query = "SELECT Familienaam, Voornaam, Klant_ID FROM Klant ORDER BY Familienaam";
 	$resultaat = mysql_query($query) or die("Kan de lijst van klanten niet opvragen: " . mysql_error());
 	while($rij = mysql_fetch_array($resultaat)) {

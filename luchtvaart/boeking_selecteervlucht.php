@@ -17,14 +17,10 @@ $_SESSION['Klant_ID'] = $naam[0];
 $_SESSION['klant_voornaam'] = $naam[1];
 $_SESSION['klant_achternaam'] = $naam[2];
 ?>
-<!-- Dit is het formulier om de ontlening te bevestigen: -->
-
-
-<!-- Voeg hier je code toe -->
 	<table>
 	<tr><td>Vertrek</td><td>Aankomst</td><td>Klasse</td><td>Luchtvaartmaatschappij_ID</td></tr>
 <?php
-
+//De query die de vlucten ophaalt.
 	$query = "SELECT k.naam, l.naam, 
 					 z.Vlucht_Nr, z.Zitplaats_Nr, 
 					 z.Klasse, z.Luchtvaartmaatschappij_ID,
@@ -44,13 +40,18 @@ ORDER BY k.Naam, z.Vlucht_Nr, z.Klasse, z.Zitplaats_Nr";
 ?>
 	
 	<tr>
+		<!-- Omdat luchthavenvanherkomst en luchthavenbestemming telkens dezelfde naam kunnen 
+			deze niet apart opgeroepen worden, daarom dat luchthavenherkomst met $entry[0] wordt opgehaald
+			en luchthaven van bestemming met entry['naam']-->
 		<td><?php echo $entry[0]; ?></td>
 		<td><?php echo $entry['naam']; ?></td>
 		<td><?php echo $entry['Klasse']; ?></td>
 		<td><?php echo $entry['Luchtvaartmaatschappij_ID']; ?></td>
 		
 		<td><form action="boeking_uitvoer.php">
-			<?php // De info voor de boeking meegeven?>
+			<?php // De info voor de boeking meegeven, dit gebeurt via een hidden field
+				  // omdat zo enkel de info van de waarde in de tabel die wordt aangeklikt wordt
+				  // meegegven ?>
 			
 			<input type ='hidden' name=boeking value="<?php echo $entry['Vlucht_Nr'] . "," . 
 																 $entry['Luchtvaartmaatschappij_ID'] . "," . 
