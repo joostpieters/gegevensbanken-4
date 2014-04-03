@@ -10,7 +10,7 @@
 	require("top.inc");
 
 	// Voer deze query uit en sla het result op in $result.
-	// LIKE omdat bij vertrektijd ook de tijd wordt gegeven en we deze niet nodig hebben en dus niet mee vergelijken (hiervoor ook dat %) 
+	// LIKE omdat bij vertrektijd ook de tijd staat maar enkel de datum wordt ingegeven bij de gebruikersinvoer. (vandaar ook het %). 
 	$query = "SELECT Vlucht_Nr FROM Vlucht WHERE Vertrektijd LIKE '" . gebruikersInvoer('vertrektijd') . "%';";
 	$result = mysql_query($query) or die("Database fout: " . mysql_error());
 ?>
