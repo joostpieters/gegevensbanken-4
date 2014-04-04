@@ -24,15 +24,14 @@ $_SESSION['klant_achternaam'] = $naam[2];
 	$query = "SELECT k.naam, l.naam, 
 					 z.Vlucht_Nr, z.Zitplaats_Nr, 
 					 z.Klasse, z.Luchtvaartmaatschappij_ID,
-					 k.Luchthaven_ID, l.Luchthaven_ID 
-	 From Zitplaats AS z
-LEFT JOIN WordtGeboektDoor AS w ON z.Vlucht_Nr = w.Vlucht_Nr and z.Zitplaats_Nr = w.Zitplaats_Nr
-INNER JOIN Vlucht as v ON v.Vlucht_Nr = z.Vlucht_Nr
-INNER JOIN Luchthaven AS k ON k.Luchthaven_ID = v.LuchthavenVanHerkomst
-INNER JOIN Luchthaven AS l ON l.Luchthaven_ID = v.LuchthavenVanBestemming
-WHERE w.Vlucht_Nr IS NULL and w.Zitplaats_Nr IS NULL 
-GROUP BY z.Vlucht_Nr, z.Klasse
-ORDER BY k.Naam, z.Vlucht_Nr, z.Klasse, z.Zitplaats_Nr";
+					 k.Luchthaven_ID, l.Luchthaven_ID 		 
+	 		From Zitplaats AS z
+     			INNER JOIN Vlucht as v ON v.Vlucht_Nr = z.Vlucht_Nr
+					INNER JOIN Luchthaven AS k ON k.Luchthaven_ID = v.LuchthavenVanHerkomst
+					INNER JOIN Luchthaven AS l ON l.Luchthaven_ID = v.LuchthavenVanBestemming
+			
+			WHERE NOT EXISTS (SELECT * FROM WordtGeboektDoor AS w WHERE w.Vlucht_Nr = z.Vlucht_Nr AND w.Zitplaats_Nr = z.Zitplaats_Nr)
+			GROUP BY z.Vlucht_Nr, z.Klasse";
 	$result = mysql_query($query) or die("Database fout: " . mysql_error());
 
 	while( $entry = mysql_fetch_array($result) ) {
