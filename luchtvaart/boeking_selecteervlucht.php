@@ -39,9 +39,9 @@ $_SESSION['klant_achternaam'] = $naam[2];
 ?>
 	
 	<tr>
-		<!-- Omdat luchthavenvanherkomst en luchthavenbestemming telkens dezelfde naam kunnen 
+		<!-- Omdat luchthavenvanherkomst en luchthavenbestemming naam gebruiken als atribuutnaam in mysql_fetch_array($result) kunnen
 			deze niet apart opgeroepen worden, daarom dat luchthavenherkomst met $entry[0] wordt opgehaald
-			en luchthaven van bestemming met entry['naam']-->
+			en luchthavenvanbestemming met entry['naam']-->
 		<td><?php echo $entry[0]; ?></td>
 		<td><?php echo $entry['naam']; ?></td>
 		<td><?php echo $entry['Klasse']; ?></td>

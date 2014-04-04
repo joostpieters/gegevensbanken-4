@@ -17,7 +17,7 @@ Dit is een web-pagina.<br /><br />
 
 <?php
 	//Plaats hier je code
-	echo "Een random nummer tussen 1 en 20:" . " " . rand(1,20);
+	echo "Een random nummer tussen 1 en 20: " . rand(1,20);
 ?>.
 <br>
 <br>
