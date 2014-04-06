@@ -54,7 +54,7 @@ $naam_aankomst = $boeking[7];
 if (!mysql_error())
 //De output van de som voor de gebruiker.
 echo "De vlucht voor " .$_SESSION['klant_voornaam']. " " . $_SESSION['klant_achternaam'] . 
-" van " . $naam_vertrek . " naar " .$naam_aankomst . " is succesvolgeboekt voor een prijs van €" . $totaal;
+" van " . $naam_vertrek . " naar " .$naam_aankomst . " is succesvol geboekt voor een prijs van €" . $totaal;
 ?>
 <?php
 // Dit sluit de verbinding met de gegevensbank en de pagina af.
