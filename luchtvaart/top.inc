@@ -22,6 +22,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>';
 	<li><a href="zoeken.php">Vluchtzoeker</a></li>
 	<li><a href="nieuwadres.php">Stel een nieuw adres in</a></li>
 	<li><a href="boeking_selecteerreisbureau.php">Boek vlucht</a></li>
+	<li><a href="zoekbestdeal.php">Best Deal</a></li>
 	
 </ul>
 </div>
