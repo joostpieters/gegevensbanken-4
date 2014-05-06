@@ -38,6 +38,34 @@
 <input type="submit" value="Zoek best deal"/>
 </form>
 
+<!-- Dit is het formulier om het adres in te geven: -->
+<form action="zoekbestdealmettussenstop.php">
+<p><em>Luchthaven van herkomst:</em>
+<select name="luchthavenvanherkomst">
+<?php
+	$query = "SELECT Luchthaven_ID, Naam, Land FROM Luchthaven ORDER BY Land";
+	$resultaat = mysql_query($query) or die("Kan de lijst van luchthavens niet opvragen: " . mysql_error());
+	while($rij = mysql_fetch_array($resultaat)) {
+		echo "<option value=\"". $rij['Luchthaven_ID'] ."\">" .$rij['Land'] . ' ' . $rij['Naam'] . "</option>";
+	}
+?>
+</select></p>
+<p><em>Luchthaven van bestemming:</em>
+<select name="luchthavenvanbestemming">
+<?php
+	$query = "SELECT Luchthaven_ID, Naam, Land FROM Luchthaven ORDER BY Land";
+	$resultaat = mysql_query($query) or die("Kan de lijst van luchthavens niet opvragen: " . mysql_error());
+	while($rij = mysql_fetch_array($resultaat)) {
+		echo "<option value=\"". $rij['Luchthaven_ID'] ."\">" .$rij['Land'] . ' ' . $rij['Naam'] . "</option>";
+	}
+?>
+</select></p>
+
+
+<!-- De knop waarop de gebruiker kan klikken. -->
+<input type="submit" value="Zoek best deal met tussenstop"/>
+</form>
+
 
 <?php
 // Dit sluit de verbinding met de gegevensbank en de pagina af.
