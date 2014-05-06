@@ -15,7 +15,7 @@
 <p><em>Luchthaven van herkomst:</em>
 <select name="luchthavenvanherkomst">
 <?php
-	$query = "SELECT Luchthaven_ID, Naam, Land FROM Luchthaven ORDER BY Land";
+	$query = "SELECT Luchthaven_ID, Naam, Land FROM Luchthaven ORDER BY Land, naam";
 	$resultaat = mysql_query($query) or die("Kan de lijst van luchthavens niet opvragen: " . mysql_error());
 	while($rij = mysql_fetch_array($resultaat)) {
 		echo "<option value=\"". $rij['Luchthaven_ID'] ."\">" .$rij['Land'] . ' ' . $rij['Naam'] . "</option>";
@@ -25,7 +25,7 @@
 <p><em>Luchthaven van bestemming:</em>
 <select name="luchthavenvanbestemming">
 <?php
-	$query = "SELECT Luchthaven_ID, Naam, Land FROM Luchthaven ORDER BY Land";
+	$query = "SELECT Luchthaven_ID, Naam, Land FROM Luchthaven ORDER BY Land, naam";
 	$resultaat = mysql_query($query) or die("Kan de lijst van luchthavens niet opvragen: " . mysql_error());
 	while($rij = mysql_fetch_array($resultaat)) {
 		echo "<option value=\"". $rij['Luchthaven_ID'] ."\">" .$rij['Land'] . ' ' . $rij['Naam'] . "</option>";
@@ -43,7 +43,7 @@
 <p><em>Luchthaven van herkomst:</em>
 <select name="luchthavenvanherkomsttussenstop">
 <?php
-	$query = "SELECT Luchthaven_ID, Naam, Land FROM Luchthaven ORDER BY Land";
+	$query = "SELECT Luchthaven_ID, Naam, Land FROM Luchthaven ORDER BY Land, naam";
 	$resultaat = mysql_query($query) or die("Kan de lijst van luchthavens niet opvragen: " . mysql_error());
 	while($rij = mysql_fetch_array($resultaat)) {
 		echo "<option value=\"". $rij['Luchthaven_ID'] ."\">" .$rij['Land'] . ' ' . $rij['Naam'] . "</option>";
@@ -53,7 +53,7 @@
 <p><em>Luchthaven van bestemming:</em>
 <select name="luchthavenvanbestemmingtussenstop">
 <?php
-	$query = "SELECT Luchthaven_ID, Naam, Land FROM Luchthaven ORDER BY Land";
+	$query = "SELECT Luchthaven_ID, Naam, Land FROM Luchthaven ORDER BY Land, naam";
 	$resultaat = mysql_query($query) or die("Kan de lijst van luchthavens niet opvragen: " . mysql_error());
 	while($rij = mysql_fetch_array($resultaat)) {
 		echo "<option value=\"". $rij['Luchthaven_ID'] ."\">" .$rij['Land'] . ' ' . $rij['Naam'] . "</option>";
