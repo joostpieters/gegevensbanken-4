@@ -41,7 +41,7 @@
 <!-- Dit is het formulier om het adres in te geven: -->
 <form action="zoekbestdealmettussenstop.php">
 <p><em>Luchthaven van herkomst:</em>
-<select name="luchthavenvanherkomst">
+<select name="luchthavenvanherkomsttussenstop">
 <?php
 	$query = "SELECT Luchthaven_ID, Naam, Land FROM Luchthaven ORDER BY Land";
 	$resultaat = mysql_query($query) or die("Kan de lijst van luchthavens niet opvragen: " . mysql_error());
@@ -51,7 +51,7 @@
 ?>
 </select></p>
 <p><em>Luchthaven van bestemming:</em>
-<select name="luchthavenvanbestemming">
+<select name="luchthavenvanbestemmingtussenstop">
 <?php
 	$query = "SELECT Luchthaven_ID, Naam, Land FROM Luchthaven ORDER BY Land";
 	$resultaat = mysql_query($query) or die("Kan de lijst van luchthavens niet opvragen: " . mysql_error());
@@ -63,7 +63,7 @@
 
 
 <!-- De knop waarop de gebruiker kan klikken. -->
-<input type="submit" value="Zoek best deal met tussenstop"/>
+<input type="submit" value="Zoek best deal met (eventueel) een tussenstop"/>
 </form>
 
 
