@@ -15,35 +15,40 @@ $IDherkomst = gebruikersInvoer('luchthavenvanherkomsttussenstop');
 $IDbestemming = gebruikersInvoer('luchthavenvanbestemmingtussenstop');
 $klasse = gebruikersInvoer('klasse');
 
-//De query die de tax van de twee luchthaven ophaalt en de som al berekent.
-	$luchthavenquery = "CREATE VIEW TaxView AS 
-	SELECT Tax, Luchthaven_ID 
-	FROM Luchthaven
-	WHERE Luchthaven_ID = " . $IDherkomst . " OR Luchthaven_ID = " . $IDbestemming;
-	
-
 // Voer deze query uit en sla het result op in $result. 
 // // //(Ik heb hier distinct moeten bijzetten omdat ik anders 1000 keer hetzelfde kreeg, maar misschien lag da aan iets anders...)
 // // //Zonder tussenstop
-	$query1 = "SELECT DISTINCT Vlucht_Nr AS Vlucht_Nr1, AantalStops AS AantalStops1 FROM Vlucht WHERE LuchthavenVanHerkomst = '".$IDherkomst."' and LuchthavenVanBestemming = '".$IDbestemming."' ;";
+	$query1 = "SELECT DISTINCT Vlucht_Nr AS Vlucht_Nr1, AantalStops AS AantalStops, (H.Tax + B.Tax + Prijs) AS Tax 
+	FROM Vlucht, Luchthaven AS H, Luchthaven as B, Klasse
+	WHERE LuchthavenVanHerkomst = '".$IDherkomst."' 
+	and LuchthavenVanBestemming = '".$IDbestemming."' 
+	and H.Luchthaven_ID = '".$IDherkomst."' 
+	and B.Luchthaven_ID = '".$IDbestemming."' 
+	and Type = '".$klasse."'
+	ORDER BY Tax;";
 	$result1 = mysql_query($query1) or die("Database fout: " . mysql_error());
 // // //Met tussenstop
-	$query2 = "SELECT DISTINCT H.Vlucht_Nr AS Vlucht_Nr1, H.AantalStops AS AantalStops1, B.vlucht_Nr AS Vlucht_Nr2, B.AantalStops AS AantalStops2 
-	FROM (Vlucht AS B JOIN VLucht AS H ON B.LuchthavenVanHerkomst = H.LuchthavenVanBestemming) 
-	WHERE H.LuchthavenVanHerkomst = '".$IDherkomst."' and B.LuchthavenVanBestemming = '".$IDbestemming."';";	
+	$query2 = "SELECT DISTINCT H.Vlucht_Nr AS Vlucht_Nr1, (H.AantalStops + B.AantalStops + 1) AS AantalStops, B.vlucht_Nr AS Vlucht_Nr2, (V.Tax + A.Tax + T.Tax + Prijs) AS Tax 
+	FROM (Vlucht AS B JOIN VLucht AS H ON B.LuchthavenVanHerkomst = H.LuchthavenVanBestemming), Luchthaven AS V, Luchthaven as A, Luchthaven T, Klasse
+	WHERE H.LuchthavenVanHerkomst = '".$IDherkomst."' 
+	and B.LuchthavenVanBestemming = '".$IDbestemming."' 
+	and V.Luchthaven_ID = '".$IDbestemming."' 
+	and A.Luchthaven_ID = '".$IDherkomst."' 
+	and T.Luchthaven_ID = B.LuchthavenVanHerkomst
+	and Type = '".$klasse."'
+	ORDER BY Tax;";	
 	$result2 = mysql_query($query2) or die("Database fout: " . mysql_error());
 ?>
 <table>
-	<tr><td>Vlucht1</td><td>Vlucht2</td><td>tussenstopsVlucht1</td><td>tussenstopsVlucht2</td><td>klasse</td></tr>
+	<tr><td>Vlucht1</td><td>Vlucht2</td><td>tussenstops</td><td>prijs</td></tr>
 	<!-- Begin van een while()-lus over de resultaten. -->
 	<?php while( $entry = mysql_fetch_array($result1, MYSQL_ASSOC)) { ?>
 	
 	<tr>
 		<td><?php echo $entry['Vlucht_Nr1']; ?></td>
-		<td><?php echo " "; ?></td>
-		<td><?php echo $entry['AantalStops1']; ?></td>
-		<td><?php echo " "; ?></td>
-		<td><?php echo $klasse; ?></td>
+		<td><?php echo "/"; ?></td>
+		<td><?php echo $entry['AantalStops']; ?></td>
+		<td><?php echo $entry['Tax']; ?></td>
 	</tr>
 	<?php } ?>
 	
@@ -53,9 +58,8 @@ $klasse = gebruikersInvoer('klasse');
 	<tr>
 		<td><?php echo $entry['Vlucht_Nr1']; ?></td>
 		<td><?php echo $entry['Vlucht_Nr2']; ?></td>
-		<td><?php echo $entry['AantalStops1']; ?></td>
-		<td><?php echo $entry['AantalStops2']; ?></td>
-		<td><?php echo $klasse; ?></td>
+		<td><?php echo $entry['AantalStops']; ?></td>
+		<td><?php echo $entry['Tax']; ?></td>
 	</tr>
 	<?php } ?>
 </table>

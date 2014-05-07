@@ -71,7 +71,17 @@
 ?>
 </select></p>
 
-<em>Klasse (Business - Economy - Low cost - Premium):</em> <input type="text" name="klasse" length="40"/><br />
+</select></p>
+<p><em>Klasse:</em>
+<select name="klasse">
+<?php
+	$query = "SELECT Type, Prijs FROM Klasse ORDER BY Prijs";
+	$resultaat = mysql_query($query) or die("Kan de lijst van klasses niet opvragen: " . mysql_error());
+	while($rij = mysql_fetch_array($resultaat)) {
+		echo "<option value=\"". $rij['Type'] ."\">" .$rij['Type'] . ' ' . $rij['Prijs'] . "</option>";
+	}
+?>
+</select></p>
 
 <!-- De knop waarop de gebruiker kan klikken. -->
 <input type="submit" value="Zoek best deal met (eventueel) een tussenstop"/>
