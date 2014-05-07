@@ -61,6 +61,7 @@
 ?>
 </select></p>
 
+<em>Klasse (Business - Economy - Low cost - Premium):</em> <input type="text" name="klasse" length="40"/><br />
 
 <!-- De knop waarop de gebruiker kan klikken. -->
 <input type="submit" value="Zoek best deal met (eventueel) een tussenstop"/>
