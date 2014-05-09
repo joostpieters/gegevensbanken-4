@@ -31,7 +31,7 @@
 	
 	<?php
 	// Berekening van de prijs:
-	$prijs = $entry[SUM_TAX] + $klasseprijs
+	$prijs = $entry['SUM_TAX'] + $klasseprijs
 	?>
 	
 	<tr>
