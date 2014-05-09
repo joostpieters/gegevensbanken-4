@@ -12,7 +12,7 @@
 	// Voer deze query uit en sla het result op in $result.
 	$query = "SELECT Vertrektijd, Aankomsttijd, AantalStops, H.Naam, H.land, H.Stad, B.Naam, B.land, B.Stad
 	FROM Vlucht, Luchthaven AS H, Luchthaven AS B
-	WHERE Vlucht_Nr = " . gebruikersInvoer('vluchtnummer') . ", LuchthavenVanHerkomst = H.Luchthaven_ID, LuchthavenVanBestemming = B.Luchthaven_ID ;";
+	WHERE Vlucht_Nr = " . gebruikersInvoer('vluchtnummer') . ", LuchthavenVanHerkomst = H.Luchthaven_ID, LuchthavenVanBestemming = B.Luchthaven_ID;";
 	$result = mysql_query($query) or die("Database fout: " . mysql_error());
 ?>
 <table>
