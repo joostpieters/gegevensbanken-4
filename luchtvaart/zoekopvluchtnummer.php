@@ -10,19 +10,27 @@
 	require("top.inc");
 
 	// Voer deze query uit en sla het result op in $result.
-	$query = "SELECT Vertrektijd, Aankomsttijd, AantalStops, H.Naam, H.land, H.Stad, B.Naam, B.land, B.Stad
+	$query = "SELECT Vertrektijd, Aankomsttijd, AantalStops, H.Naam AS NaamH, H.Land AS LandH, H.BediendeStad AS StadH, B.Naam AS NaamB, B.Land AS LandB, B.BediendeStad AS StadB
 	FROM Vlucht, Luchthaven AS H, Luchthaven AS B
-	WHERE Vlucht_Nr = " . gebruikersInvoer('vluchtnummer') . ", LuchthavenVanHerkomst = H.Luchthaven_ID, LuchthavenVanBestemming = B.Luchthaven_ID ;";
+	WHERE Vlucht_Nr = " . gebruikersInvoer('vluchtnummer') . "
+	AND LuchthavenVanHerkomst = H.Luchthaven_ID
+	AND LuchthavenVanBestemming = B.Luchthaven_ID ;";
 	$result = mysql_query($query) or die("Database fout: " . mysql_error());
 ?>
 <table>
-	<tr><td>Vluchtnummer</td><td>Herkomst</td><td>Bestemming</td></tr>
+	<tr><td>Vertrektijd</td><td>Aankomsttijd</td><td>Tussenstops</td><td>  VAN Luchthaven</td><td>Land</td><td>Stad</td><td>   NAAR Luchthaven</td><td>Land</td><td>Stad</td></tr>
 	<!-- Begin van een while()-lus over de resultaten. -->
 	<?php while( $entry = mysql_fetch_array($result, MYSQL_ASSOC) ) { ?>
 	<tr>
-		<td><?php echo $entry['Vlucht_Nr']; ?></td>
-		<td><?php echo $entry['LuchthavenVanHerkomst']; ?></td>
-		<td><?php echo $entry['LuchthavenVanBestemming']; ?></td>
+		<td><?php echo $entry['Vertrektijd']; ?></td>
+		<td><?php echo $entry['Aankomsttijd']; ?></td>
+		<td><?php echo $entry['AantalStops']; ?></td>
+		<td><?php echo $entry['NaamH']; ?></td>
+		<td><?php echo $entry['LandH']; ?></td>
+		<td><?php echo $entry['StadH']; ?></td>
+		<td><?php echo $entry['NaamB']; ?></td>
+		<td><?php echo $entry['LandB']; ?></td>
+		<td><?php echo $entry['StadB']; ?></td>
 	</tr>
 	<?php } ?>
 </table>
