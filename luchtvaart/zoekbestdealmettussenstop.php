@@ -3,14 +3,14 @@
 	require('database.inc');
 	
 	// De titel van de pagina, die bovenaan en in de menu-balk verschijnt.
-	$title = 'zoek de goedkoopste vlucht met eventueel tussenstops';
+	$title = 'Best Deal';
 	
 	// Dit commando zorgt voor de initialisatie van de pagina en
 	// het weergeven van het menu.
 	require("top.inc");
 
 // Implementeer je code hier.
-// we krijgen de string "voornaam,achternaam" mee, deze exploden we en kennen we toe aan $voornaam en $achternaam
+// Variabelen toewijzen
 $IDherkomst = gebruikersInvoer('luchthavenvanherkomsttussenstop');
 $IDbestemming = gebruikersInvoer('luchthavenvanbestemmingtussenstop');
 $klasse = gebruikersInvoer('klasse');

@@ -10,7 +10,7 @@
 	require("top.inc");
 ?>
 
-<!-- Dit is het formulier om het adres in te geven: -->
+<!-- Dit is het formulier om de nodige gegevens (herkomst, bestemming, klasse) in te geven: -->
 <form action="zoekbestdealrechtstreeks.php">
 <p><em>Luchthaven van herkomst:</em>
 <select name="luchthavenvanherkomst">
@@ -48,7 +48,7 @@
 <input type="submit" value="Zoek best deal"/>
 </form>
 
-<!-- Dit is het formulier om het adres in te geven: -->
+<!-- Dit is het formulier om de nodige gegevens (herkomst, bestemming, klasse) in te geven: -->
 <form action="zoekbestdealmettussenstop.php">
 <p><em>Luchthaven van herkomst:</em>
 <select name="luchthavenvanherkomsttussenstop">
