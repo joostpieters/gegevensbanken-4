@@ -34,6 +34,14 @@
 <input type="submit" value="Zoek op luchthaven"/>
 </form>
 
+<!-- Dit is het formulier om te zoeken op vluchtnummer: -->
+<form action="zoekopvluchtnummer.php">
+<em>Vluchtnummer:</em> <input type="text" name="vluchtnummer" /><br />
+
+<!-- De knop waarop de gebruiker kan klikken. -->
+<input type="submit" value="Zoek op vluchtnummer"/>
+</form>
+
 
 <?php
 // Dit sluit de verbinding met de gegevensbank en de pagina af.

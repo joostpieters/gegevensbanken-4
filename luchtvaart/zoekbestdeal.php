@@ -78,7 +78,7 @@
 	$query = "SELECT Type, Prijs FROM Klasse ORDER BY Prijs";
 	$resultaat = mysql_query($query) or die("Kan de lijst van klasses niet opvragen: " . mysql_error());
 	while($rij = mysql_fetch_array($resultaat)) {
-		echo "<option value=\"". $rij['Type'] ."\">" .$rij['Type'] . ' ' . $rij['Prijs'] . "</option>";
+		echo "<option value=\"". $rij['Prijs'] ."\">" .$rij['Type'] . ' ' . $rij['Prijs'] . "</option>";
 	}
 ?>
 </select></p>
