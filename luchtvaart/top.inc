@@ -14,17 +14,18 @@ echo '<?xml version="1.0" encoding="utf-8"?>';
 </head>
 <body>
 <div class="navigation">
-<h2 class="indexTitle">Index</h2>
-<ul>
-	<li><a href="index.php">Voorpagina</a></li>
-	<li><a href="klanten.php">Lijst van klanten</a></li>
-	<li><a href="luchtvaartmaatschappijen.php">Lijst van luchtvaartmaatschappijen in de US</a></li>
-	<li><a href="zoeken.php">Vluchtzoeker</a></li>
-	<li><a href="nieuwadres.php">Stel een nieuw adres in</a></li>
-	<li><a href="boeking_selecteerreisbureau.php">Boek vlucht</a></li>
-	<li><a href="zoekbestdeal.php">Best Deal</a></li>
-	
-</ul>
+<h2 class="indexTitle"></h2>
+    <p><a href="index.php" class="button"/>Voorpagina</a>
+       <a href="klanten.php" class="button"/>Klantenlijst</a>
+       <a href="luchtvaartmaatschappijen.php" class="button"/>Luchtvaartmaatschappijen</a>
+       <a href="zoeken.php" class="button"/>Vluchtzoeker</a>
+       <a href="nieuwadres.php" class="button"/>Nieuw adres</a>
+       <a href="boeking_selecteerreisbureau.php" class="button"/>Boek Vlucht</a>
+       <a href="zoekbestdeal.php" class="button"/>Best Deal</a>
+    </p>
+
+
+
 </div>
 <div class="main">
 <h2 class="contentTitle"><?php print $title;?></h2>
