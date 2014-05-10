@@ -2,14 +2,14 @@
  * Dit is een beschrijving van de lay-out van de webpagina.
  */
 div.main, div.navigation {
-   border: 1px solid #000;
+   border: 2px solid #000;
 }
 
 div.navigation {
-   background: #FFFF83;
+   background: #041cff;
    color: #000;
    float: left;
-   width: 33%;
+   width: 75%;
    margin: 0;
 }
 
