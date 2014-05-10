@@ -15,6 +15,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>';
 <body>
 <div class="navigation">
 <h2 class="indexTitle"></h2>
+    <center>
     <p><a href="index.php" class="button"/>Voorpagina</a>
        <a href="klanten.php" class="button"/>Klantenlijst</a>
        <a href="luchtvaartmaatschappijen.php" class="button"/>Luchtvaartmaatschappijen</a>
@@ -23,7 +24,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>';
        <a href="boeking_selecteerreisbureau.php" class="button"/>Boek Vlucht</a>
        <a href="zoekbestdeal.php" class="button"/>Best Deal</a>
     </p>
-
+    </center>
 
 
 </div>
