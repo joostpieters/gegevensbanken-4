@@ -11,7 +11,9 @@
 ?>
 <?php
 $_SESSION['luchthavenquery'] = "SELECT Luchthaven_ID, Naam, Land FROM Luchthaven ORDER BY Land, naam";
+$_SESSION['klassequery'] = "SELECT Type, Prijs FROM Klasse ORDER BY Prijs";
 ?>
+
 <!-- Dit is het formulier om de nodige gegevens (herkomst, bestemming, klasse) in te geven: -->
 <form action="zoekbestdealrechtstreeks.php">
 <p><em>Luchthaven van herkomst:</em>
@@ -35,7 +37,6 @@ $_SESSION['luchthavenquery'] = "SELECT Luchthaven_ID, Naam, Land FROM Luchthaven
 <p><em>Klasse:</em>
 <select name="klasse">
 <?php
-	$query = "SELECT Type, Prijs FROM Klasse ORDER BY Prijs";
 	$resultaat = mysql_query($query) or die("Kan de lijst van klasses niet opvragen: " . mysql_error());
 	while($rij = mysql_fetch_array($resultaat)) {
 		echo "<option value=\"". $rij['Prijs'] ."\">" .$rij['Type'] . ' ' . $rij['Prijs'] . "</option>";
