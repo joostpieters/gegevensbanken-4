@@ -9,14 +9,15 @@
 	// het weergeven van het menu.
 	require("top.inc");
 ?>
-
+<?php
+$_SESSION['luchthavenquery'] = "SELECT Luchthaven_ID, Naam, Land FROM Luchthaven ORDER BY Land, naam";
+?>
 <!-- Dit is het formulier om de nodige gegevens (herkomst, bestemming, klasse) in te geven: -->
 <form action="zoekbestdealrechtstreeks.php">
 <p><em>Luchthaven van herkomst:</em>
 <select name="luchthavenvanherkomst">
 <?php
-	$query = "SELECT Luchthaven_ID, Naam, Land FROM Luchthaven ORDER BY Land, naam";
-	$resultaat = mysql_query($query) or die("Kan de lijst van luchthavens niet opvragen: " . mysql_error());
+	$resultaat = mysql_query($_SESSION['luchthavenquery']) or die("Kan de lijst van luchthavens niet opvragen: " . mysql_error());
 	while($rij = mysql_fetch_array($resultaat)) {
 		echo "<option value=\"". $rij['Luchthaven_ID'] ."\">" .$rij['Land'] . ' ' . $rij['Naam'] . "</option>";
 	}
@@ -25,8 +26,7 @@
 <p><em>Luchthaven van bestemming:</em>
 <select name="luchthavenvanbestemming">
 <?php
-	$query = "SELECT Luchthaven_ID, Naam, Land FROM Luchthaven ORDER BY Land, naam";
-	$resultaat = mysql_query($query) or die("Kan de lijst van luchthavens niet opvragen: " . mysql_error());
+	$resultaat = mysql_query($_SESSION['luchthavenquery']) or die("Kan de lijst van luchthavens niet opvragen: " . mysql_error());
 	while($rij = mysql_fetch_array($resultaat)) {
 		echo "<option value=\"". $rij['Luchthaven_ID'] ."\">" .$rij['Land'] . ' ' . $rij['Naam'] . "</option>";
 	}
@@ -53,8 +53,7 @@
 <p><em>Luchthaven van herkomst:</em>
 <select name="luchthavenvanherkomsttussenstop">
 <?php
-	$query = "SELECT Luchthaven_ID, Naam, Land FROM Luchthaven ORDER BY Land, naam";
-	$resultaat = mysql_query($query) or die("Kan de lijst van luchthavens niet opvragen: " . mysql_error());
+	$resultaat = mysql_query($_SESSION['luchthavenquery']) or die("Kan de lijst van luchthavens niet opvragen: " . mysql_error());
 	while($rij = mysql_fetch_array($resultaat)) {
 		echo "<option value=\"". $rij['Luchthaven_ID'] ."\">" .$rij['Land'] . ' ' . $rij['Naam'] . "</option>";
 	}
@@ -63,8 +62,7 @@
 <p><em>Luchthaven van bestemming:</em>
 <select name="luchthavenvanbestemmingtussenstop">
 <?php
-	$query = "SELECT Luchthaven_ID, Naam, Land FROM Luchthaven ORDER BY Land, naam";
-	$resultaat = mysql_query($query) or die("Kan de lijst van luchthavens niet opvragen: " . mysql_error());
+	$resultaat = mysql_query($_SESSION['luchthavenquery']) or die("Kan de lijst van luchthavens niet opvragen: " . mysql_error());
 	while($rij = mysql_fetch_array($resultaat)) {
 		echo "<option value=\"". $rij['Luchthaven_ID'] ."\">" .$rij['Land'] . ' ' . $rij['Naam'] . "</option>";
 	}
