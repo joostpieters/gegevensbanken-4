@@ -39,6 +39,8 @@ Dit is de datum binnen een week:<br />
 <?php
 echo date('d-m-Y', strtotime('+7 days'))
 ?>
+
+
 <?php
 // Voer de inhoud van "bottom.inc" uit. Dit sluit de pagina af
 // en verbreekt de verbinding met de database.
