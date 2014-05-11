@@ -8,8 +8,9 @@ require("top.inc");
 $_SESSION['vertrek'] = gebruikersInvoer('luchthavenvanherkomst');
 
 $query = "SELECT DISTINCT LuchthavenVanBestemming, Land, Naam
-FROM Vlucht as v JOIN Luchthaven as l
-ON l.Luchthaven_ID = v.LuchthavenVanBestemming WHERE v.LuchthavenVanHerkomst = " . $_SESSION['vertrek'];
+FROM Vlucht as v JOIN Luchthaven as l ON l.Luchthaven_ID = v.LuchthavenVanBestemming 
+WHERE v.LuchthavenVanHerkomst = " . $_SESSION['vertrek'] . "
+ORDER BY Land, Naam";
 
 ?>
 
