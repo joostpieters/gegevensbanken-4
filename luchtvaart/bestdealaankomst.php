@@ -6,9 +6,8 @@ require("top.inc");
 
 <?php
 $_SESSION['vertrek'] = gebruikersInvoer('luchthavenvanherkomst');
-$klassequery = "SELECT * FROM Klasse ORDER BY Prijs";
-print_r($klassequery);
-$query = "SELECT LuchthavenVanBestemming, Land, Naam
+
+$query = "SELECT DISTINCT LuchthavenVanBestemming, Land, Naam
 FROM Vlucht as v JOIN Luchthaven as l
 ON l.Luchthaven_ID = v.LuchthavenVanBestemming WHERE v.LuchthavenVanHerkomst = " . $_SESSION['vertrek'];
 

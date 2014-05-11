@@ -8,8 +8,8 @@ require("top.inc");
 $_SESSION['aankomst'] = gebruikersInvoer('luchthavenvanbestemming');
 $_SESSION['klasseprijs'] = gebruikersInvoer('klasseprijs');
 
-$query = "(SELECT DISTINCT Vlucht_Nr AS Vlucht_Nr1, AantalStops, \"Geen\" AS Vlucht_Nr2, (H.Tax + B.Tax) AS Tax
-	FROM Vlucht, Luchthaven AS H, Luchthaven as B
+$query = "(SELECT DISTINCT TIMESTAMPDIFF(DAY, r.Vertrektijd, r.Vertrektijd) as dif, Vlucht_Nr AS Vlucht_Nr1, AantalStops, \"Geen\" AS Vlucht_Nr2, (H.Tax + B.Tax) AS Tax
+	FROM Vlucht as r, Luchthaven AS H, Luchthaven as B
 	WHERE LuchthavenVanHerkomst = '". $_SESSION['vertrek'] ."'
 and LuchthavenVanBestemming = '". $_SESSION['aankomst'] ."'
 and H.Luchthaven_ID = '". $_SESSION['vertrek'] ."'
@@ -17,18 +17,18 @@ and B.Luchthaven_ID = '". $_SESSION['aankomst'] ."')
 
 UNION
 
-(SELECT DISTINCT H.Vlucht_Nr AS Vlucht_Nr1, (H.AantalStops + B.AantalStops + 1) AS AantalStops, B.vlucht_Nr AS Vlucht_Nr2, (V.Tax + A.Tax + T.Tax) AS Tax
-	FROM (Vlucht AS B JOIN Vlucht AS H ON B.LuchthavenVanHerkomst = H.LuchthavenVanBestemming), Luchthaven AS V, Luchthaven as A, Luchthaven T
+(SELECT DISTINCT TIMESTAMPDIFF(DAY, B.Vertrektijd, H.Vertrektijd) as dif, H.Vlucht_Nr AS Vlucht_Nr1, (H.AantalStops + B.AantalStops + 1) AS AantalStops, B.vlucht_Nr AS Vlucht_Nr2, (V.Tax + A.Tax + T.Tax) AS Tax
+	FROM (Vlucht AS B JOIN Vlucht AS H ON B.LuchthavenVanHerkomst = H.LuchthavenVanBestemming), Luchthaven AS V, Luchthaven as A, Luchthaven AS T
 	WHERE H.LuchthavenVanHerkomst = '". $_SESSION['vertrek'] ."'
 	and B.LuchthavenVanBestemming = '". $_SESSION['aankomst'] ."'
 	and V.Luchthaven_ID = '". $_SESSION['aankomst'] ."'
 	and A.Luchthaven_ID = '". $_SESSION['vertrek'] ."'
 	and T.Luchthaven_ID = B.LuchthavenVanHerkomst
 	and H.Aankomsttijd < B.Vertrektijd
-	and TIMESTAMPDIFF(DAY, B.Vertrektijd, H.Vertrektijd) < 10
+	and TIMESTAMPDIFF(DAY, B.Vertrektijd, H.Vertrektijd) < 0
 	)
 ORDER BY Tax";
-//print_r($query);
+print_r($query);
 $result = mysql_query($query) or die("Database fout: " . mysql_error());
 ?>
 <table>
@@ -43,6 +43,7 @@ $result = mysql_query($query) or die("Database fout: " . mysql_error());
     <tr>
         <td><?php echo $entry['Vlucht_Nr1']; ?></td>
         <td><?php echo $entry['Vlucht_Nr2']; ?></td>
+        <td><?php echo $entry['dif']; ?></td>
         <td><?php echo $entry['AantalStops']; ?></td>
         <td><?php echo $prijs; ?></td>
     </tr>
